@@ -7,6 +7,67 @@
 
 **Upstream:** [fiatjaf/pyramid](https://github.com/fiatjaf/pyramid). **Fork:** [arbadacarbaYK/pyramid](https://github.com/arbadacarbaYK/pyramid).
 
+Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md)
+
+## Where this sits (platform map)
+
+This fork is the **Nostr relay + optional GRASP** layer for gittr — not the web forge and not the SSH bridge. **You are here = Pyramid relay** (`relay.gittr.space`, teal). Cyan-outlined boxes = other public hostnames (teal = this repo; cyan outline = host URLs).
+
+```mermaid
+flowchart TB
+  subgraph people["People / agents"]
+    Human["Human in browser"]
+    Agent["AI agent via MCP"]
+    CLI["CLI: gn / git / ngit"]
+  end
+
+  subgraph gittr_stack["gittr platform · hostnames"]
+    UI["gittr Client<br/>gittr.space<br/>web forge"]
+    Pages["Pages / nsite<br/>pages.gittr.space"]
+    Bridge["gitnostr Bridge<br/>git.gittr.space<br/>SSH / HTTPS git"]
+    MCP["gittr-mcp<br/>tools for agents"]
+    RelayGittr["★ YOU ARE HERE · Pyramid relay<br/>relay.gittr.space<br/>wss · open forge + GRASP"]
+  end
+
+  subgraph nostr_world["Nostr + remotes"]
+    Relays["Other Nostr relays<br/>NIP-34 events"]
+    RemoteNostr["git remote nostr<br/>nostr:// · ngit ecosystem"]
+  end
+
+  Human --> UI
+  Agent --> MCP
+  CLI --> Bridge
+  CLI --> RemoteNostr
+  UI --> RelayGittr
+  UI --> Relays
+  UI --> Bridge
+  UI --> Pages
+  MCP --> RelayGittr
+  MCP --> Relays
+  MCP --> Bridge
+  Pages --> Relays
+  Bridge --> RelayGittr
+  Bridge --> Relays
+  RemoteNostr --> Relays
+  RemoteNostr -.->|same events| Bridge
+
+  classDef youAreHere fill:#0f766e,stroke:#5eead4,stroke-width:3px,color:#ecfdf5
+  classDef hostUrl fill:#164e63,stroke:#22d3ee,stroke-width:2px,color:#ecfeff
+  class RelayGittr youAreHere
+  class Bridge,Pages hostUrl
+```
+
+| Piece | Host / link | Job in one line |
+| --- | --- | --- |
+| **gittr Client** | [gittr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr?branch=main) · `gittr.space` | Web forge: Code, Issues/PRs, Push, import, ToDo, Apps |
+| **gitnostr Bridge** | [gitnostr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gitnostr?branch=main) · **`git.gittr.space`** | Real git over SSH/HTTPS; watches this relay (+ others); kind 52 keys |
+| **Pages / nsite** | [nsite-gateway](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/nsite-gateway) · **`pages.gittr.space`** | Static sites from Nostr (gittr Pages) |
+| **★ Pyramid relay (this README)** | [this fork](https://github.com/arbadacarbaYK/pyramid) · **`relay.gittr.space`** (`wss://`) | **You are here** — open forge + discussion relay; GRASP-capable |
+| **gittr-mcp** | [gittr-mcp](https://github.com/arbadacarbaYK/gittr-mcp) | Agents publish NIP-34 here (and other relays) over Nostr |
+| **git remote nostr** | [ngit-cli](https://github.com/DanConwayDev/ngit-cli) | `nostr://` remotes — other stack, same NIP-34 events |
+
+**Addressing:** events live on **`wss://relay.gittr.space`** (+ other relays). Git blobs / SSH stay on **`git.gittr.space`**. Sites on **`pages.gittr.space`**. Details: [FORGE.md](./FORGE.md).
+
 ### Kinds this adaptation is for (short list)
 
 NIP-34 (`30617`/`30618`, patches/PRs/issues), gitnostr **`52` SSH keys**, NIP-39 **`10011`**, discussions **`30023`/`1111`**, notes **`1`**, Pages **`15128`/`35128`**, apps **`32267`/`30063`/`3063`**, bounties **`9806`**, plus profiles/follows/zaps/reactions. Full table in **FORGE.md**.

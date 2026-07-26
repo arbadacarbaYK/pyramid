@@ -9,6 +9,7 @@ It is maintained for **Nostr git** workflows used by **[gittr](https://gittr.spa
 | This fork / gittr deploy | **Open** relay + **GRASP** companion for Nostr-git clients. Not invite/paid write. |
 | Live | **`wss://relay.gittr.space`** (also in gittr `NEXT_PUBLIC_NOSTR_RELAYS` / bridge relays) |
 | Repo name | Kept as `pyramid` for upstream tracking; branding is README / GitHub About. |
+| Platform map | See [README.md § Where this sits](./README.md#where-this-sits-platform-map) — this fork is the **`relay.gittr.space`** card next to `git.gittr.space` / `pages.gittr.space`. |
 
 ## “Members” — what that word means (and why we ignore it)
 
