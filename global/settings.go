@@ -330,7 +330,9 @@ func loadUserSettings() error {
 			MaxEventSize:           10_000,
 			MaxSubscriptionsOpen:   2_000,
 			MaxTotalCostOpen:       7_200,
-			MaxIndexableTags:       14,
+			// 64: NIP-65 relay lists + forge events with many p/e tags (was 14; blocked
+			// operator kind 10002 with ~21 r tags on relay.gittr.space).
+			MaxIndexableTags:       64,
 			MaxEntriesInFollowList: 1600,
 			MaxQueryLimit:          500,
 		},

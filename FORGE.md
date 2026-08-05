@@ -59,10 +59,13 @@ Membership is **optional** — not the access model. **Private todos/discussions
 (spaces after commas so the line wraps in GitHub README viewers):
 
 ```
-0, 1, 3, 5, 6, 7, 50, 51, 52, 1111, 1337, 1617, 1618, 1619, 1621, 1624, 1630, 1631, 1632, 1633, 1985, 3063, 7374, 7375, 7376, 9321, 9735, 9806, 10011, 10018, 10019, 10317, 15128, 17375, 23194, 23195, 24242, 30023, 30063, 30617, 30618, 32267, 35128
+0, 1, 3, 5, 6, 7, 50, 51, 52, 1111, 1337, 1617, 1618, 1619, 1621, 1624, 1630, 1631, 1632, 1633, 1985, 3063, 7374, 7375, 7376, 9321, 9735, 9806, 10002, 10011, 10018, 10019, 10050, 10317, 15128, 17375, 23194, 23195, 24242, 30023, 30063, 30617, 30618, 32267, 35128
 ```
 
 Open kinds must also be **allowed**. Parser accepts spaces.
+
+**Limits (gittr forge):** set **`limits.max_indexable_tags` to `64`** (default upstream is `14`).  
+NIP-65 kind `10002` relay lists and forge events with many `p`/`e` tags otherwise get `blocked: too many indexable tags`. Live change: edit `$DATA_PATH/settings.json` then `systemctl restart pyramid`, or Settings → limits in the relay UI as root.
 
 **GRASP:** **on** for this adaptation (see below).
 
