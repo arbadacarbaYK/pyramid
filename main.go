@@ -416,9 +416,17 @@ func main() {
 
 		pk := global.Settings.RelayInternalSecretKey.Public()
 		info.Self = &pk
-		for root := range pyramid.GetChildren(pk) {
-			info.PubKey = &root
-			break
+		// NIP-11 "pubkey" = operator contact for indexes (nostr.watch).
+		// Prefer an explicit PLATFORM identity (relay_operator_pubkey). Never use
+		// the first invite-tree root — that is a human with a personal NIP-65 list
+		// and must stay separate from platform env relays / Amber / NWC.
+		info.PubKey = &pk
+		if op := strings.TrimSpace(global.Settings.RelayOperatorPubKey); op != "" {
+			if parsed, err := nostr.PubKeyFromHex(op); err == nil {
+				info.PubKey = &parsed
+			} else {
+				log.Warn().Err(err).Str("relay_operator_pubkey", op).Msg("invalid relay_operator_pubkey; using Self")
+			}
 		}
 
 		info.Name = global.Settings.RelayName

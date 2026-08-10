@@ -20,7 +20,11 @@ type UserSettings struct {
 	RelayDescription string   `json:"relay_description"`
 	RelayContact     string   `json:"relay_contact"`
 	RelayIcon        string   `json:"relay_icon"`
-	Pinned           nostr.ID `json:"pinned,omitempty"`
+	// Optional hex pubkey shown as NIP-11 "pubkey" (nostr.watch operator).
+	// Keep this a PLATFORM identity — never a human Amber/NIP-65 key.
+	// Empty = use relay Self (internal key), not the first invite-tree root.
+	RelayOperatorPubKey string `json:"relay_operator_pubkey,omitempty"`
+	Pinned              nostr.ID `json:"pinned,omitempty"`
 
 	// theme
 	Theme struct {
@@ -502,12 +506,13 @@ var SupportedKindsDefault = []nostr.Kind{
 	7374, 7375, 7376, // NIP-60 Cashu quote / tokens / history
 	9321, 9735, 9802, 9806, 10000, 10001, 10002, 10003, 10004,
 	10005, 10006, 10007, 10009, 10011, 10012, 10013, 10015, 10018, 10019, 10027, 10030, 10044, 10050, 10054, 10063, 10064,
-	10154,
+	10154, 10166, // NIP-66 relay monitor announcement
 	10777, 10101, 10102, 10317, 15128, 17375,
 	16767,
 	23194, 23195, 24133, 24242, // blossom auth (pages uploads)
 	30000, 30002, 30003, 30004, 30008, 30009, 30015, 30023, 30024, 30030,
-	30063, 30078, 30311, 30617, 30618, 30818, 30819, 31922, 31923,
+	30063, 30078, 30166, // NIP-66 relay liveness check (nostr.watch)
+	30311, 30617, 30618, 30818, 30819, 31922, 31923,
 	31924, 31925, 32267, 35128, 39701,
 }
 

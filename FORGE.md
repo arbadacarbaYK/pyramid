@@ -45,6 +45,7 @@ Membership is **optional** — not the access model. **Private todos/discussions
 | `15128` / `35128` | NIP-5A | **Nostr Pages / nsite** manifests |
 | `24242` | Blossom | Upload auth (pages) |
 | `30617` / `30618` | NIP-34 | Repo announcement + state |
+| `30078` | NIP-78 | gittr notification prefs (`d=gittr/notifications`) |
 
 ### Follow lists — yes
 
@@ -59,13 +60,17 @@ Membership is **optional** — not the access model. **Private todos/discussions
 (spaces after commas so the line wraps in GitHub README viewers):
 
 ```
-0, 1, 3, 5, 6, 7, 50, 51, 52, 1111, 1337, 1617, 1618, 1619, 1621, 1624, 1630, 1631, 1632, 1633, 1985, 3063, 7374, 7375, 7376, 9321, 9735, 9806, 10002, 10011, 10018, 10019, 10050, 10317, 15128, 17375, 23194, 23195, 24242, 30023, 30063, 30617, 30618, 32267, 35128
+0, 1, 3, 5, 6, 7, 50, 51, 52, 1111, 1337, 1617, 1618, 1619, 1621, 1624, 1630, 1631, 1632, 1633, 1985, 3063, 7374, 7375, 7376, 9321, 9735, 9806, 10002, 10011, 10018, 10019, 10050, 10166, 10317, 15128, 17375, 23194, 23195, 24242, 30023, 30063, 30078, 30166, 30617, 30618, 32267, 35128
 ```
 
 Open kinds must also be **allowed**. Parser accepts spaces.
 
 **Limits (gittr forge):** set **`limits.max_indexable_tags` to `64`** (default upstream is `14`).  
 NIP-65 kind `10002` relay lists and forge events with many `p`/`e` tags otherwise get `blocked: too many indexable tags`. Live change: edit `$DATA_PATH/settings.json` then `systemctl restart pyramid`, or Settings → limits in the relay UI as root.
+
+**NIP-66 (nostr.watch):** add **`10166`** and **`30166`** to **open kinds**, and either rebuild with those kinds in `SupportedKindsDefault` or set **`allowed_kinds_spec`** to `+10166,+30166`. gittr’s on-box `gittr-relaymon.timer` publishes those events so monitors/nostr.watch can discover `wss://relay.gittr.space`.
+
+**NIP-11 operator (nostr.watch “owner”):** set **`relay_operator_pubkey`** in `$DATA_PATH/settings.json` to the **platform** identity hex (not a human Amber key). That identity must publish kind **0** + kind **10002** with **platform env relays only**, and optionally kind **10317** GRASP hosts. Personal NIP-65 / Amber / NWC stay separate — never copy the operator list into `NEXT_PUBLIC_NOSTR_RELAYS`.
 
 **GRASP:** **on** for this adaptation (see below).
 
