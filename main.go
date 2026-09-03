@@ -58,10 +58,19 @@ var (
 	log   zerolog.Logger
 )
 
+//go:embed static/styles.css
+var requiredStyles []byte
+
 //go:embed static/*
 var static embed.FS
 
 func main() {
+	if len(requiredStyles) == 0 {
+		fmt.Fprintf(os.Stderr, "static/styles.css is empty: run `just tailwind` (npm install && npx tailwindcss -i base.css -o static/styles.css) before go build\n")
+		os.Exit(7)
+		return
+	}
+
 	if err := global.Init(); err != nil {
 		fmt.Fprintf(os.Stderr, "couldn't initialize: %s\n", err)
 		os.Exit(7)

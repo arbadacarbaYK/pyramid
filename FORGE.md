@@ -96,6 +96,8 @@ Wire into:
 curl -s https://raw.githubusercontent.com/arbadacarbaYK/pyramid/master/easy.sh | bash
 ```
 
-That installs **this** fork (clone + `go build` with CGO). Override with `PYRAMID_REPO_URL` / `PYRAMID_REPO_REF` if needed.
+That installs **this** fork (clone + Tailwind `static/styles.css` + `go build` with CGO). Override with `PYRAMID_REPO_URL` / `PYRAMID_REPO_REF` if needed.
 
-Behind nginx (gittr production style): `HOST=127.0.0.1` `PORT=3334`, proxy `https`/`wss` to that port, set domain `relay.gittr.space`, paste open kinds, enable GRASP in settings.
+**Dashboard CSS:** `static/styles.css` is gitignored and **embedded at compile time**. The HTML is a Tailwind app (`/static/styles.css`). If you skip the Tailwind step, `https://relay.gittr.space/static/styles.css` 404s and the page looks like unstyled 1990s HTML (pyramid photo + default browser links). `easy.sh` now refuses that build. Manual builds: `npm install && npx tailwindcss -i base.css -o static/styles.css` (or `just build`) **before** `go build`. Docker already runs Tailwind.
+
+Behind nginx (gittr production style): `HOST=127.0.0.1` `PORT=3334`, proxy `https`/`wss` to that port (including `/static/`), set domain `relay.gittr.space`, paste open kinds, enable GRASP in settings.

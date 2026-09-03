@@ -14,7 +14,13 @@ templ:
     templ generate
 
 tailwind:
+    #!/bin/bash
+    set -euo pipefail
+    if [ ! -x ./node_modules/.bin/tailwindcss ]; then
+      npm install
+    fi
     ./node_modules/.bin/tailwindcss -i base.css -o static/styles.css
+    test -s static/styles.css
 
 deploy target: build
     ssh root@{{target}} 'systemctl stop pyramid'

@@ -23,6 +23,9 @@ need git
 need go
 # CGO + LMDB
 need gcc
+# Tailwind CSS is gitignored and embedded into the binary. A go build
+# without this step ships an unstyled "90s HTML" dashboard.
+need npm
 
 DIR="$(pwd)/pyramid"
 if [ -d "$DIR/.git" ]; then
@@ -36,10 +39,24 @@ else
 fi
 
 cd "$DIR"
-# Prefer just if present; otherwise plain Go build
+
+echo "building dashboard CSS (static/styles.css)..."
+npm install
+npx tailwindcss -i base.css -o static/styles.css
+if [ ! -s static/styles.css ]; then
+  echo "static/styles.css missing after tailwind; refusing unstyled build"
+  exit 1
+fi
+
+# Prefer just if present; otherwise plain Go build.
+# CSS is already on disk so a musl/`just build` failure can still fall back
+# to a dynamic go build without shipping a dashboard with no stylesheet.
 if command -v just >/dev/null 2>&1 && [ -f justfile ]; then
   just templ 2>/dev/null || true
-  just build 2>/dev/null || CGO_ENABLED=1 go build -o ./pyramid-exe .
+  if ! just build; then
+    echo "just build failed (often missing musl-gcc); falling back to CGO go build"
+    CGO_ENABLED=1 go build -o ./pyramid-exe .
+  fi
 else
   if command -v templ >/dev/null 2>&1; then
     templ generate || true
