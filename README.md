@@ -7,7 +7,7 @@
 
 **Upstream:** [fiatjaf/pyramid](https://github.com/fiatjaf/pyramid). **Fork:** [arbadacarbaYK/pyramid](https://github.com/arbadacarbaYK/pyramid).
 
-Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md)
+Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md) · **Docs hub:** [gittr-docu](https://3un05jr4dnwh6njreq6uhzgv67st83jxi5lnpsbf8y3dkdq1qkgittr-docu.pages.gittr.space/)
 
 ## Where this sits (platform map)
 
