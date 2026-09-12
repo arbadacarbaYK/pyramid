@@ -7,7 +7,9 @@
 
 **Upstream:** [fiatjaf/pyramid](https://github.com/fiatjaf/pyramid). **Fork:** [arbadacarbaYK/pyramid](https://github.com/arbadacarbaYK/pyramid).
 
-Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md)
+Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md) · **Docs hub:** [gittr-docu](https://3un05jr4dnwh6njreq6uhzgv67st83jxi5lnpsbf8y3dkdq1qkgittr-docu.pages.gittr.space/)
+
+**This repo’s Page:** root [`index.html`](./index.html). After **Push Manifest**, save site name `pyramid`.
 
 ## Where this sits (platform map)
 
@@ -62,8 +64,8 @@ flowchart TB
 | **gittr Client** | [gittr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr?branch=main) · `gittr.space` | Web forge: Code, Issues/PRs, Push, import, ToDo, Apps |
 | **gitnostr Bridge** | [gitnostr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gitnostr?branch=main) · **`git.gittr.space`** | Real git over SSH/HTTPS; watches this relay (+ others); kind 52 keys |
 | **Pages / nsite** | [nsite-gateway](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/nsite-gateway) · **`pages.gittr.space`** | Static sites from Nostr (gittr Pages) |
-| **★ Pyramid relay (this README)** | [this fork](https://github.com/arbadacarbaYK/pyramid) · **`relay.gittr.space`** (`wss://`) | **You are here** — open forge + discussion relay; GRASP-capable |
-| **gittr-mcp** | [gittr-mcp](https://github.com/arbadacarbaYK/gittr-mcp) | Agents publish NIP-34 here (and other relays) over Nostr |
+| **★ Pyramid relay (this README)** | [pyramid on gittr.space](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/pyramid) · **`relay.gittr.space`** (`wss://`) | **You are here** — open forge + discussion relay; GRASP-capable |
+| **gittr-mcp** | [gittr-mcp](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr-mcp) | Agents publish NIP-34 here (and other relays) over Nostr |
 | **git remote nostr** | [ngit-cli](https://github.com/DanConwayDev/ngit-cli) | `nostr://` remotes — other stack, same NIP-34 events |
 
 **Addressing:** events live on **`wss://relay.gittr.space`** (+ other relays). Git blobs / SSH stay on **`git.gittr.space`**. Sites on **`pages.gittr.space`**. Details: [FORGE.md](./FORGE.md).
