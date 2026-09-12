@@ -9,6 +9,8 @@
 
 Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md) · **Docs hub:** [gittr-docu](https://3un05jr4dnwh6njreq6uhzgv67st83jxi5lnpsbf8y3dkdq1qkgittr-docu.pages.gittr.space/)
 
+**This repo’s Page:** root [`index.html`](./index.html). After **Push Manifest**, save site name `pyramid`.
+
 ## Where this sits (platform map)
 
 This fork is the **Nostr relay + optional GRASP** layer for gittr — not the web forge and not the SSH bridge. **You are here = Pyramid relay** (`relay.gittr.space`, teal). Cyan-outlined boxes = other public hostnames (teal = this repo; cyan outline = host URLs).
