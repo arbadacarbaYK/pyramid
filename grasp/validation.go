@@ -29,13 +29,30 @@ func RejectIncomingEvent(ctx context.Context, event nostr.Event) (reject bool, r
 			return true, "pull request not found: must reference an existing pull request (kind 1618)"
 		}
 	case 1630, 1631, 1632, 1633:
-		// these kinds must reference an existing kind 1617 or 1618
-		if eTag := event.Tags.Find("e"); eTag == nil || !refExistsAsKind(eTag[1], []nostr.Kind{1617, 1618}) {
-			return true, "issue not found: must reference an existing issue or pull request (kind 1617 or 1618)"
+		// NIP-34 status must point at an existing patch (1617), PR (1618), or issue (1621).
+		// gittr issues are kind 1621; omitting it made Close never land on this relay.
+		if eTag := statusRootETag(event); eTag == nil || !refExistsAsKind(eTag[1], []nostr.Kind{1617, 1618, 1621}) {
+			return true, "issue not found: must reference an existing issue, pull request, or patch (kind 1621, 1618, or 1617)"
 		}
 	}
 
 	return false, ""
+}
+
+func statusRootETag(event nostr.Event) nostr.Tag {
+	var first nostr.Tag
+	for _, tag := range event.Tags {
+		if len(tag) < 2 || tag[0] != "e" {
+			continue
+		}
+		if first == nil {
+			first = tag
+		}
+		if len(tag) >= 4 && tag[3] == "root" {
+			return tag
+		}
+	}
+	return first
 }
 
 func repositoryExists(aTag string) bool {

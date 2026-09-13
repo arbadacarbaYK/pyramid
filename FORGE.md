@@ -83,7 +83,7 @@ This relay **should** run with **GRASP enabled**. It is a Nostr-git companion: c
 | What GRASP adds | HTTP git hosting for repos that have a **kind 30617** on **this** relay (`/grasp/…`) |
 | What it does **not** do | Replace `git.gittr.space` (git-nostr-bridge / SSH). Both can coexist. |
 | Does it hurt “catching” events? | **No for reads.** `REQ` / sync / stored notes, follows, SSH keys, Cashu, zaps still work. |
-| Write-side nuance | With GRASP **on**, patches/issues/PRs/state (`1617`–`1633`, `30618`) must reference a **30617 already on this relay** (normal GRASP). Publish the repo announce here first (open kinds include `30617`). Orphaned git events without a local announce are rejected — that is intentional integrity, not spam filtering. |
+| Write-side nuance | With GRASP **on**, patches/issues/PRs (`1617`/`1618`/`1621`) and repo state (`30618`) must reference a **30617 already on this relay**. Status events (`1630`–`1633`) must reference an existing **1621 issue**, **1618 PR**, or **1617 patch** on this relay — not only PRs/patches. Publish the repo announce here first (open kinds include `30617`). Orphaned git events without a local announce are rejected — that is intentional integrity, not spam filtering. |
 | GRASP **off** | This fork skips that strict check so the box can be events-only; git HTTP hosting is disabled. |
 
 gittr’s primary bare-repo/SSH path remains **`git.gittr.space`**. Enabling GRASP here helps **interop** (other clients that speak GRASP) and discovery — it does not stop the relay from storing general Nostr traffic.
