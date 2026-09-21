@@ -64,7 +64,7 @@ flowchart TB
 | **gittr Client** | [gittr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr?branch=main) · `gittr.space` | Web forge: Code, Issues/PRs, Push, import, ToDo, Apps |
 | **gitnostr Bridge** | [gitnostr](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gitnostr?branch=main) · **`git.gittr.space`** | Real git over SSH/HTTPS; watches this relay (+ others); kind 52 keys |
 | **Pages / nsite** | [nsite-gateway](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/nsite-gateway) · **`pages.gittr.space`** | Static sites from Nostr (gittr Pages) |
-| **Blossom** | [gittr-blossom](https://github.com/arbadacarbaYK/gittr-blossom) · **`blossom.gittr.space`** | Blob server for Pages and media. Separate from Pyramid’s member media feature |
+| **Blossom** | [gittr-blossom](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr-blossom?branch=master) · **`blossom.gittr.space`** | Blob storage for Pages and media |
 | **★ Pyramid relay (this README)** | [pyramid on gittr.space](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/pyramid) · **`relay.gittr.space`** (`wss://`) | **You are here** — open forge + discussion relay; GRASP-capable |
 | **gittr-mcp** | [gittr-mcp](https://gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr-mcp) | Agents publish NIP-34 here (and other relays) over Nostr |
 | **git remote nostr** | [ngit-cli](https://github.com/DanConwayDev/ngit-cli) | `nostr://` remotes — other stack, same NIP-34 events |
