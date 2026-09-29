@@ -449,7 +449,7 @@ func main() {
 			MaxSubscriptions: global.Settings.Limits.MaxSubscriptionsOpen,
 			MaxLimit:         global.Settings.Limits.MaxQueryLimit,
 		}
-		info.Software = "https://github.com/fiatjaf/pyramid"
+		info.Software = "https://github.com/arbadacarbaYK/pyramid"
 		info.Version = currentVersion
 		return info
 	}

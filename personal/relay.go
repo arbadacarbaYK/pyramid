@@ -58,7 +58,7 @@ func setupEnabled() {
 		info.Description = global.Settings.Personal.GetDescription()
 		info.Icon = global.Settings.Personal.GetIcon()
 		info.Contact = global.Settings.RelayContact
-		info.Software = "https://github.com/fiatjaf/pyramid"
+		info.Software = "https://github.com/arbadacarbaYK/pyramid"
 		return info
 	}
 

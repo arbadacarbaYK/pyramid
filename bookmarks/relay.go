@@ -70,7 +70,7 @@ func setupEnabled() {
 		info.Description = global.Settings.Bookmarks.GetDescription()
 		info.Icon = global.Settings.Bookmarks.GetIcon()
 		info.Contact = global.Settings.RelayContact
-		info.Software = "https://github.com/fiatjaf/pyramid"
+		info.Software = "https://github.com/arbadacarbaYK/pyramid"
 		return info
 	}
 
@@ -79,7 +79,7 @@ func setupEnabled() {
 		info.Description = "public aggregation of all member bookmarks at " + global.Settings.Bookmarks.GetName()
 		info.Icon = global.Settings.Bookmarks.GetIcon()
 		info.Contact = global.Settings.RelayContact
-		info.Software = "https://github.com/fiatjaf/pyramid"
+		info.Software = "https://github.com/arbadacarbaYK/pyramid"
 		return info
 	}
 

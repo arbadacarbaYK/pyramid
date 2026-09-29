@@ -164,7 +164,7 @@ func setupEnabled() {
 		info.Description = global.Settings.Inbox.GetDescription()
 		info.Icon = global.Settings.Inbox.GetIcon()
 		info.Contact = global.Settings.RelayContact
-		info.Software = "https://github.com/fiatjaf/pyramid"
+		info.Software = "https://github.com/arbadacarbaYK/pyramid"
 
 		return info
 	}
