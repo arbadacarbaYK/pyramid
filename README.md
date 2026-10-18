@@ -9,6 +9,8 @@
 
 Live: **`wss://relay.gittr.space`** · forge docs: [FORGE.md](./FORGE.md) · **Docs hub:** [gittr-docu](https://3un05jr4dnwh6njreq6uhzgv67st83jxi5lnpsbf8y3dkdq1qkgittr-docu.pages.gittr.space/)
 
+Events live on this relay. The git files live on the server named in gittr **Settings → Relays**.
+
 **This repo’s Page:** root [`index.html`](./index.html). After **Push Manifest**, save site name `pyramid`.
 
 ## Where this sits (platform map)
