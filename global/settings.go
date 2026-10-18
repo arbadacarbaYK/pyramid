@@ -331,12 +331,13 @@ func loadUserSettings() error {
 		MaxInvitesPerPerson:     4,
 		RequireCurrentTimestamp: false,
 		Limits: Limits{
-			MaxEventSize:           10_000,
+			// Whole-message cap as well as content. A Pages manifest is one
+			// tag per file (plus a few relay hints), so 10KB/64 tags rejected
+			// a normal docs publish while an older copy stayed in the directory.
+			MaxEventSize:           262_144,
 			MaxSubscriptionsOpen:   2_000,
 			MaxTotalCostOpen:       7_200,
-			// 64: NIP-65 relay lists + forge events with many p/e tags (was 14; blocked
-			// operator kind 10002 with ~21 r tags on relay.gittr.space).
-			MaxIndexableTags:       64,
+			MaxIndexableTags:       2_500,
 			MaxEntriesInFollowList: 1600,
 			MaxQueryLimit:          500,
 		},
